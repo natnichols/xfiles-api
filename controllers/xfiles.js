@@ -10,6 +10,17 @@ async function create(req, res) {
   }
 }
 
+async function index(req, res) {
+  try {
+    const xfiles = await Xfile.find({}).sort({ createdAt: 'desc' })
+    res.json(xfiles)
+  } catch (err) {
+    console.log(`🚨`, err)
+    res.status(500).json(`🚨`, err)
+  }
+}
+
 export {
-  create
+  create,
+  index
 }
