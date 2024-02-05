@@ -20,7 +20,18 @@ async function index(req, res) {
   }
 }
 
+async function deleteXfile(req, res) {
+  try {
+    const xfile = await Xfile.findByIdAndDelete(req.params.xfileId)
+    res.json(xfile)
+  } catch (err) {
+    console.log(`🚨`, err)
+    res.status(500).json(`🚨`, err)
+  }
+}
+
 export {
   create,
-  index
+  index, 
+  deleteXfile as delete,
 }
