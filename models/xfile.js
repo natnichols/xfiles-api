@@ -10,7 +10,7 @@ const xfileSchema = new Schema({
     required: true
   },
   episodeNum: { type: Number, required: true },
-  // releaseDate: Date,
+  releaseDate: Date,
   summary: String,
   hasMulder: Boolean,
   hasScully: Boolean,
