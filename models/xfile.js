@@ -2,6 +2,23 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
+const quoteSchema = new Schema({
+  text: {
+    type: String,
+    required: true
+  },
+  character: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Character'
+  }],
+  episode: { 
+    type: Schema.Types.ObjectId, 
+    ref: 'Xfile' 
+  },
+}, {
+  timestamps: true
+})
+
 const xfileSchema = new Schema({
   name: { type: String, required: true },
   season: {
@@ -14,10 +31,11 @@ const xfileSchema = new Schema({
   summary: String,
   hasMulder: Boolean,
   hasScully: Boolean,
-  quotes: [{
+  characters: [{
     type: Schema.Types.ObjectId,
-    ref: 'Quote'
-  }]
+    ref: 'Character'
+  }],
+  quotes: [quoteSchema]
 },
   { timestamps: true }
 )

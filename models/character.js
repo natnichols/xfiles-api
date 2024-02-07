@@ -2,26 +2,25 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
-const quoteSchema = new Schema({
-  text: {
+const characterSchema = new Schema({
+  name: {
     type: String,
     required: true
   },
-  speaker: {
-    // reference a 'character' model later?
+  actor: {
     type: String,
     required: true
   },
-  episode: { 
+  episodes: [{ 
     type: Schema.Types.ObjectId, 
     ref: 'Xfile' 
-  },
+  }],
 }, {
   timestamps: true
 })
 
-const Quote = mongoose.model('Quote', quoteSchema)
+const Character = mongoose.model('Character', characterSchema)
 
 export {
-  Quote
+  Character
 }
