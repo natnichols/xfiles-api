@@ -10,10 +10,14 @@ const xfileSchema = new Schema({
     required: true
   },
   episodeNum: { type: Number, required: true },
-  releaseDate: Date,
+  releaseDate: { type: Date, required: true },
   summary: String,
   hasMulder: Boolean,
   hasScully: Boolean,
+  quotes: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Quote'
+  }]
 },
   { timestamps: true }
 )
