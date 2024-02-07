@@ -31,6 +31,17 @@ async function deleteXfile(req, res) {
   }
 }
 
+export async function show(req, res) {
+  try {
+    const xfile = await Xfile.findById(req.params.xfileId)
+      .populate(['characters', 'quotes'])
+    res.json(xfile)
+  } catch (err) {
+    console.log(`🚨`, err)
+    res.status(500).json(`🚨`, err)
+  }
+}
+
 export async function createQuote(req, res) {
   try {
     const xfile = await Xfile.findById(req.params.xfileId)

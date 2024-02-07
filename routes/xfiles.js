@@ -6,6 +6,8 @@ const router = Router()
 // ========== Public Routes ===========
 // GET to localhost:3001/api/xfiles
 router.get('/', xfilesCtrl.index)
+// GET to localhost:3001/api/xfiles/:xfileId
+router.get('/:xfileId', xfilesCtrl.show)
 // POST to localhost:3001/api/xfiles
 router.post('/', xfilesCtrl.create)
 // POST to localhost:3001/api/xfiles/:xfileId/quotes
