@@ -1,6 +1,6 @@
 import { Xfile } from '../models/xfile.js'
 
-async function create(req, res) {
+export async function create(req, res) {
   try {
     const xfile = await Xfile.create(req.body)
     res.json(xfile)
@@ -10,7 +10,7 @@ async function create(req, res) {
   }
 }
 
-async function index(req, res) {
+export async function index(req, res) {
   try {
     const xfiles = await Xfile.find({}).sort({ createdAt: 'desc' })
     res.json(xfiles)
@@ -31,7 +31,5 @@ async function deleteXfile(req, res) {
 }
 
 export {
-  create,
-  index, 
   deleteXfile as delete,
 }
